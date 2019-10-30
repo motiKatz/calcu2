@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2 >
+   
+    <div id="screen" style="border: 2px solid blue;height: 15px ; ; width: 5.5%;"    ></div>
+
+
+    <div>
+        <button onclick="look(7)">7</button>
+        <button onclick="look(8)">8</button>
+        <button onclick="look(9)" >9</button>
+        <button onclick="look('*')">*</button>
+   </div>
+   <div>
+        <button onclick="look(4)">4</button>
+        <button onclick="look(5)">5</button>
+        <button onclick="look(6)">6</button>
+        <button onclick="look('-')">-</button>
+   </div>
+   <div>
+        <button onclick="look(1)">1</button>
+        <button onclick= "look(2)">2</button>
+        <button onclick="look(3)">3</button>
+        <button onclick= "look('+')">+</button>
+   </div>
+   <div>
+        <button onclick="cler()">c</button>
+        <button onclick="look(0)">0</button>
+        <button onclick="equels()">=</button>
+        <button onclick="look('/')">/</button>
+   </div>
+   <p>history</p>
+   <div id="history" style="border: solid  blue;height: 80px ; ; width: 8%;" ></div>
+</h2>
+
+
+   <script>
+       let arr=[];
+       let str="";
+       let total=0;
+       function  look(a){
+           document.getElementById('screen').innerHTML+=a;
+           arr.push(a);
+         }
+       function equels(){
+           look('=');
+           let v=0;
+           let operator='+';
+             for(let i=0;i<arr.length;i++){
+                 let b=arr[i];
+                 if( typeof b== "number"){
+                     str+=b;
+                     }
+                 else{
+                     v=parseInt(str);
+                     str="";
+                      canc(operator,v);
+                      operator=b;
+                    }
+                  }
+                  look(total);
+                  total=0;
+                 }
+
+    function canc(o,a){
+        switch (o) {
+            case '+':
+            total+=a;
+                break;
+            case '-':
+            total-=a;
+            break;
+            case '*':
+            total*=a;
+            break;
+            case '/':
+            total/=a;
+            break;
+            default:
+                break;
+        }
+        
+         }
+    function cler(){
+        document.getElementById("history").innerHTML+=document.getElementById('screen').innerHTML+"</br>" ;
+     
+        document.getElementById('screen').innerHTML=" ";
+        arr=[];
+    
+    
+    
+}
+        
+   </script>
+    
+</body>
+</html>
